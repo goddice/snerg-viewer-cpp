@@ -2,11 +2,12 @@ C++ implementation for the viewer of SNeRG ([Baking Neural Radiance Fields for R
 
 Steps of running the code:
 1. python download download_data.py
-2. mkdir build
-3. cd build
-4. cmake ../
-5. make -j8
+2. cmake -S . -B build
+3. cmake --build build --config Release
 
-Run it (e.g.: ./app ../models/hotdog)
+Run it (e.g.: ./build/app models/drums)
+
+![screen shot](https://i.ibb.co/fkyv8Qr/snerg.png)
+
 
 For the model training and the original webgl viewer, please refer to the official SNeRG repo: [https://github.com/google-research/google-research/tree/master/snerg](https://github.com/google-research/google-research/tree/master/snerg)
