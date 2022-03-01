@@ -1,0 +1,5 @@
+.vs
+out
+build
+models
+CMakeSettings.json
