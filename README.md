@@ -1,3 +1,5 @@
+[![linux](https://github.com/goddice/snerg-viewer-cpp/actions/workflows/linux.yml/badge.svg?branch=main)](https://github.com/goddice/snerg-viewer-cpp/actions/workflows/linux.yml)
+
 C++ implementation for the viewer of SNeRG ([Baking Neural Radiance Fields for Real-Time View-Synthesis](http://nerf.live)).
 
 Steps of running the code:
