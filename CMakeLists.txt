@@ -4,6 +4,7 @@
 cmake_minimum_required (VERSION 3.8)
 
 project ("BackingRender")
+set (CMAKE_CXX_STANDARD 11)
 
 find_package(OpenGL REQUIRED)
 set(DEPENDENCIES OpenGL::GL)

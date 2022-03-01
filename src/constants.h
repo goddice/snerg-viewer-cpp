@@ -11,7 +11,7 @@ const int DISPLAY_COARSE_GRID = 4;
 const int DISPLAY_3D_ATLAS = 5;
 
 static std::string rayMarchVertexShader = R"(  
-  #version 430 core
+  #version 330 core
 
   layout (location = 0) in vec3 position;
 
@@ -38,7 +38,7 @@ static std::string rayMarchVertexShader = R"(
 )";
 
 static std::string rayMarchFragmentShaderHeader = R"(
-  #version 430 core
+  #version 330 core
   out vec4 FragColor;
 
   in vec3 vOrigin;

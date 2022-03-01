@@ -87,15 +87,19 @@ int main(int argc, char** argv)
         std::cerr << "Usage: " << argv[0] << " <model directory>\n";
         exit(0);
     }
-    std::string model_dir = argv[1];
+     std::string model_dir = argv[1];
 
     // glfw: initialize and configure
     // ------------------------------
+    int openGLVersionMajor = 4;
+    int openGLVersionMiner = 3;
     glfwInit();
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, openGLVersionMajor);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, openGLVersionMiner);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, true);
+    if (openGLVersionMajor >= 4) {
+        glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, true);
+    }
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
 #ifdef __APPLE__
@@ -121,14 +125,16 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    // enable OpenGL debug context if context allows for debug context
-    int flags; glGetIntegerv(GL_CONTEXT_FLAGS, &flags);
-    if (flags & GL_CONTEXT_FLAG_DEBUG_BIT)
-    {
-        glEnable(GL_DEBUG_OUTPUT);
-        glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS); // makes sure errors are displayed synchronously
-        glDebugMessageCallback(glDebugOutput, nullptr);
-        glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, GL_TRUE);
+    if (openGLVersionMajor >= 4) {
+        // enable OpenGL debug context if context allows for debug context
+        int flags; glGetIntegerv(GL_CONTEXT_FLAGS, &flags);
+        if (flags & GL_CONTEXT_FLAG_DEBUG_BIT)
+        {
+            glEnable(GL_DEBUG_OUTPUT);
+            glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS); // makes sure errors are displayed synchronously
+            glDebugMessageCallback(glDebugOutput, nullptr);
+            glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, nullptr, GL_TRUE);
+        }
     }
 
     // initialize the scene
