@@ -1,0 +1,16 @@
+[submodule "thirdparty/glm"]
+	path = thirdparty/glm
+	url = git@github.com:g-truc/glm.git
+[submodule "thirdparty/glfw"]
+	path = thirdparty/glfw
+	url = git@github.com:glfw/glfw.git
+[submodule "thirdparty/nlohmann"]
+	path = thirdparty/nlohmann
+	url = git@github.com:nlohmann/json.git
+[submodule "thirdparty/stb"]
+	path = thirdparty/stb
+	url = git@github.com:nothings/stb.git
+[submodule "thirdparty/glad"]
+	path = thirdparty/glad
+	url = git@github.com:Dav1dde/glad.git
+	branch = glad2
