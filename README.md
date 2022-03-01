@@ -19,6 +19,7 @@ $ git submodule update --init --recursive
 
 Steps of running the code:
 ```bash
+$ python -m pip install --user -r requirements.txt
 $ python scripts/download_data.py
 $ cmake -S . -B build
 $ cmake --build build --config Release
