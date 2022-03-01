@@ -1,9 +1,9 @@
-name: cppcheck-action-test
+name: cppcheck
 on: [push]
 
 jobs:
   build:
-    name: cppcheck-test
+    name: static analysis
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -12,6 +12,7 @@ jobs:
         uses: deep5050/cppcheck-action@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
+          output_file: cppcheck/report.txt
           
         
       - name: publish report    
