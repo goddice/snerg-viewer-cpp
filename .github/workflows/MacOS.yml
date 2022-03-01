@@ -11,13 +11,14 @@ env:
   BUILD_TYPE: Release
 
 jobs:
-  build-linux-gcc:
+  build-macos:
     name: MacOS
     runs-on: macos-latest
     env:
+      CC: clang
+      CXX: clang++
       CFLAGS: -Werror
       CXXFLAGS: -Werror
-      MACOSX_DEPLOYMENT_TARGET: 10.8
 
     steps:
     - uses: actions/checkout@v2
