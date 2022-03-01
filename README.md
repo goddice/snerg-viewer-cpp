@@ -1,7 +1,7 @@
 C++ implementation for the viewer of SNeRG ([Baking Neural Radiance Fields for Real-Time View-Synthesis](http://nerf.live)).
 
 Steps of running the code:
-1. python download download_data.py
+1. python scripts/download_data.py
 2. cmake -S . -B build
 3. cmake --build build --config Release
 
