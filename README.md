@@ -1,3 +1,4 @@
+[![Windows](https://github.com/goddice/snerg-viewer-cpp/actions/workflows/Windows.yml/badge.svg?branch=main)](https://github.com/goddice/snerg-viewer-cpp/actions/workflows/Windows.yml)
 [![MacOS](https://github.com/goddice/snerg-viewer-cpp/actions/workflows/MacOS.yml/badge.svg?branch=main)](https://github.com/goddice/snerg-viewer-cpp/actions/workflows/MacOS.yml)
 [![Linux](https://github.com/goddice/snerg-viewer-cpp/actions/workflows/Linux.yml/badge.svg?branch=main)](https://github.com/goddice/snerg-viewer-cpp/actions/workflows/Linux.yml)
 
