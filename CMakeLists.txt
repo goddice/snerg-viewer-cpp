@@ -28,8 +28,5 @@ include_directories(${NLOHMANN_PATH})
 set(THIRD_PARTY_PATH "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty")
 include_directories(${THIRD_PARTY_PATH})
 
-file(COPY "${CMAKE_SOURCE_DIR}/models" DESTINATION ${CMAKE_BINARY_DIR})
-message("Binary Dir: ${CMAKE_BINARY_DIR}")
-
 add_executable(app main.cpp ${GLAD_DIR}/src/glad.c shader.h  "constants.h" "Raymarch.cpp" "TrackballControls.h" "TrackballControls.cpp")
 target_link_libraries(app ${DEPENDENCIES})

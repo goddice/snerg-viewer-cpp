@@ -7,6 +7,7 @@
 #include <glm/gtc/quaternion.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <cmath>
 
 #define   FloatInfinity std::numeric_limits<float>::infinity()
 #define   SQRT1_2  0.7071067811865476
@@ -169,7 +170,7 @@ void TrackballControls::RotateCamera()
 
 	float angle = (float)acos(glm::dot(m_rotStart, m_rotEnd) / glm::length(m_rotStart) / glm::length(m_rotEnd));
 
-	if (!isnan(angle) && angle != 0.0f)
+	if (!std::isnan(angle) && angle != 0.0f)
 	{
 
 
