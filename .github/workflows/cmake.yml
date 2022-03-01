@@ -14,9 +14,6 @@ jobs:
   build-linux-x11-clang:
     name: X11 (Linux, Clang)
     runs-on: ubuntu-latest
-    env:
-      CC: clang
-      CFLAGS: Werror
 
     steps:
     - uses: actions/checkout@v2
