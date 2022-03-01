@@ -8,3 +8,5 @@ Steps of running the code:
 5. make -j8
 
 Run it (e.g.: ./app ../models/hotdog)
+
+For the model training and the original webgl viewer, please refer to the official SNeRG repo: [https://github.com/google-research/google-research/tree/master/snerg](https://github.com/google-research/google-research/tree/master/snerg)
