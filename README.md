@@ -4,10 +4,26 @@
 
 C++ implementation for the viewer of SNeRG ([Baking Neural Radiance Fields for Real-Time View-Synthesis](http://nerf.live)).
 
+The third-party libraries are organized as git submodules. 
+Therefore, be sure to use the `--recursive` flag when
+cloning the repository:
+```bash
+$ git clone --recursive https://github.com/goddice/snerg-viewer-cpp.git
+```
+
+If you accidentally clone the repo without using ``--recursive``, run the
+following command to also fetch the dependencies:
+```bash
+$ git submodule update --init --recursive
+```
+
 Steps of running the code:
-1. python scripts/download_data.py
-2. cmake -S . -B build
-3. cmake --build build --config Release
+```bash
+$ python -m pip install --user -r requirements.txt
+$ python scripts/download_data.py
+$ cmake -S . -B build
+$ cmake --build build --config Release
+```
 
 Run it (e.g.: ./build/app models/drums)
 
