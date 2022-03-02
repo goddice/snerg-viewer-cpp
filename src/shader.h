@@ -13,7 +13,8 @@ class Shader
 {
 public:
     unsigned int ID;
-    // constructor generates the shader on the fly
+    // constructor
+    Shader(): ID(0) {}
     // ------------------------------------------------------------------------
     void initialize(const std::string& vertexCode, const std::string& fragmentCode)
     {
@@ -115,7 +116,7 @@ public:
 private:
     // utility function for checking shader compilation/linking errors.
     // ------------------------------------------------------------------------
-    void checkCompileErrors(GLuint shader, std::string type)
+    void checkCompileErrors(GLuint shader, const std::string& type)
     {
         GLint success;
         GLchar infoLog[1024];

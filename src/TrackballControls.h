@@ -19,7 +19,7 @@ class  Camera3D {
 public:
 	glm::vec3 m_eye, m_up;
 	glm::mat4 m_viewMatr;
-	Camera3D(const glm::vec3& pos);
+	explicit Camera3D(const glm::vec3& pos);
 	void LookAt(const glm::vec3& target);
 };
 /**
@@ -27,7 +27,6 @@ public:
 */
 class TrackballControls
 {
-
 public:
 	/**
 	* @param cam = pointer to active camera object.
@@ -36,21 +35,46 @@ public:
 	static TrackballControls& GetInstance(Camera3D* cam, glm::vec4 screenSize);
 
 	void Init(GLFWwindow* win);
-
 	void Update();
-
 	void MouseUp();
-
 	void KeyUp();
-
 	void MouseDown(int button, int action, int mods, int xpos, int ypos);
-
 	void MouseMove(int xpos, int ypos);
-
 	void KeyDown(int key);
-
 	void MouseWheel(double xoffset, double yoffset);
 
+private:
+	TrackballControls(Camera3D* cam, glm::vec4 screenSize);
+
+	glm::vec3 GetMouseProjectionOnBall(int clientX, int clientY);
+	glm::vec2 GetMouseOnScreen(int clientX, int clientY);
+
+	void RotateCamera();
+	void ZoomCamera();
+	void PanCamera();
+	void CheckDistances();
+
+	enum class TCB_STATE :uint8_t {
+		NONE,
+		ROTATE,
+		ZOOM,
+		PAN
+	};
+
+	Camera3D* m_pCam;
+	glm::vec4 m_screen;
+
+	glm::vec3 m_target;
+	glm::vec3 m_lastPos;
+	glm::vec3 m_eye;
+	glm::vec3 m_rotStart;
+	glm::vec3 m_rotEnd;
+	glm::vec2 m_zoomStart;
+	glm::vec2 m_zoomEnd;
+	glm::vec2 m_panStart;
+	glm::vec2 m_panEnd;
+	TCB_STATE m_state;
+	TCB_STATE m_prevState;
 
 	float m_rotateSpeed;
 	float m_zoomSpeed;
@@ -65,47 +89,6 @@ public:
 	bool m_noRoll;
 	bool m_staticMoving;
 
-private:
-	TrackballControls(Camera3D* cam, glm::vec4 screenSize);
-
-
-
-
-	glm::vec3 GetMouseProjectionOnBall(int clientX, int clientY);
-
-	glm::vec2 GetMouseOnScreen(int clientX, int clientY);
-
-	void  RotateCamera();
-
-	void ZoomCamera();
-
-	void PanCamera();
-
-	void CheckDistances();
-
-	enum class TCB_STATE :uint8_t {
-		NONE,
-		ROTATE,
-		ZOOM,
-		PAN
-	};
-
-	Camera3D* m_pCam;
-	glm::vec4 m_screen;
-
-
-	glm::vec3 m_target;
-	glm::vec3 m_lastPos;
-	glm::vec3 m_eye;
-	glm::vec3 m_rotStart;
-	glm::vec3 m_rotEnd;
-	glm::vec2 m_zoomStart;
-	glm::vec2 m_zoomEnd;
-	glm::vec2 m_panStart;
-	glm::vec2 m_panEnd;
-	TCB_STATE m_state;
-	TCB_STATE m_prevState;
-
 	static uint32_t m_keys[3];
 
 };
@@ -118,21 +101,14 @@ inline glm::vec2 TrackballControls::GetMouseOnScreen(int clientX, int clientY)
 	);
 }
 
-
 inline void TrackballControls::MouseUp() {
-
-	if (!m_enabled)return;
-
+	if (!m_enabled) { return; }
 	m_state = TCB_STATE::NONE;
-
 }
 
 inline void TrackballControls::KeyUp() {
-
 	if (!m_enabled) { return; }
-
 	m_state = m_prevState;
-
 }
 
 #endif//TRACKBALL_CONTROLLS_H

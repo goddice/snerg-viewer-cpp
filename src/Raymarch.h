@@ -16,11 +16,11 @@ public:
 	void setNearPlane(float near);
 	void setFovy(float vfy);
 	void setCameraMatrix(glm::mat4 world_T_camera);
-	bool initScene();
-	void update(float t);
-	void render();
-	void resize(int, int);
-	void releaseScene();
+	bool initScene() override;
+	void update(float t) override;
+	void render() override;
+	void resize(int, int) override;
+	void releaseScene() override;
 
 	nlohmann::json gSceneParams;
 private:
@@ -29,9 +29,9 @@ private:
 	unsigned int VBO, VAO, EBO;
 	std::string vertexShaderSrc;
 	std::string fragmentShaderSrc;
-	unsigned int screen_width;
-	unsigned int screen_height;
-	float gNearPlane;
+	unsigned int screenWidth;
+	unsigned int screenHeight;
+	float nearPlane;
 	float vfovy;
 
 	// modeling variables

@@ -13,25 +13,37 @@
 #include "PerspectiveCamera.h"
 #include "TrackballControls.h"
 
-Raymarch::Raymarch() {
-    m_rootDir = "";
-    screen_width = 1280;
-    screen_height = 720;
-    gNearPlane = 0.33f;
-    vfovy = 35.0f;
-}
+Raymarch::Raymarch():
+    shader(),
+    VBO(0),
+    VAO(0),
+    EBO(0),
+    vertexShaderSrc(""),
+    fragmentShaderSrc(""),
+    nearPlane(0.33f),
+    vfovy(35.0f),
+    m_rootDir(""),
+    rgbVolumeTexture(0),
+    alphaVolumeTexture(0),
+    featureVolumeTexture(0),
+    atlasIndexTexture(0),
+    weightsTexZero(0),
+    weightsTexOne(0),
+    weightsTexTwo(0),
+    screenWidth(1280),
+    screenHeight(720) {}
 
 void Raymarch::setRootDir(const std::string& rootDir) {
     m_rootDir = rootDir;
 }
 
 void Raymarch::setSize(int width, int height) {
-    screen_width = width;
-    screen_height = height;
+    screenWidth = width;
+    screenHeight = height;
 }
 
 void Raymarch::setNearPlane(float near) {
-    gNearPlane = near;
+    nearPlane = near;
 }
 
 void Raymarch::setFovy(float vfy) {
@@ -45,7 +57,7 @@ bool Raymarch::initScene() {
         return false;
     }
 
-    if (!loadScene(m_rootDir, screen_width, screen_height)) {
+    if (!loadScene(m_rootDir, screenWidth, screenHeight)) {
         return false;
     }
 
@@ -92,20 +104,12 @@ bool Raymarch::initScene() {
     float voxelSize = gSceneParams["voxel_size"];
     float minPosition[3] = { gSceneParams["min_x"], gSceneParams["min_y"] , gSceneParams["min_z"] };
 
-    float cx = 0.0f;
-    float cy = 1.0f;
-    float cz = -4.0f;
-    if ((bool)gSceneParams["ndc"]) {
-        cz = -0.25f;
-    }
-
-
     float modelViewMatrix[] = { 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, -100, 1 };
     float z_far = 10000.0f;
     float z_near = -10000.0f;
     float projectionMatrix[] = { 
-        2.0f / screen_width, 0, 0, 0,
-        0, 2.0f / screen_height, 0, 0, 
+        2.0f / screenWidth, 0, 0, 0,
+        0, 2.0f / screenHeight, 0, 0,
         0, 0, -2.0f / (z_far - z_near), 0,
         0, 0, 0, 1 };
 
@@ -126,7 +130,7 @@ bool Raymarch::initScene() {
     shader.setInt("weightsTwo", 6);
     shader.setInt("displayMode", DISPLAY_NORMAL);
     shader.setInt("ndc", 0);
-    shader.setFloat("nearPlane", 0.33f);
+    shader.setFloat("nearPlane", nearPlane);
     shader.setFloat("blockSize", blockSize);
     shader.setFloat("voxelSize", voxelSize);
     shader.setVec3("minPosition", minPosition[0], minPosition[1], minPosition[2]);
@@ -144,7 +148,7 @@ bool Raymarch::initScene() {
 }
 
 void Raymarch::setCameraMatrix(glm::mat4 world_T_camera) {
-    PerspectiveCamera cam(35.0f, 1.0f * screen_width / screen_height, 0.33f, 100.0f);
+    PerspectiveCamera cam(35.0f, 1.0f * screenWidth / screenHeight, 0.33f, 100.0f);
     world_T_camera[3][1] = 1.0f;
     cam.updateProjectionMatrix();
     glm::mat4 camera_T_clip = glm::make_mat4(cam.projectionInv);
@@ -192,8 +196,6 @@ void Raymarch::releaseScene() {
 }
 
 bool Raymarch::loadScene(const std::string& dirUrl, int width, int height) {
-    int gLoadedRGBATextures = 0;
-    int gLoadedFeatureTextures = 0; 
     int gNumTextures = 0;
 
     int image_width;

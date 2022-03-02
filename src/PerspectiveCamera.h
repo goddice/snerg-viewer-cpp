@@ -99,6 +99,6 @@ public:
 	float m_aspect;
 	float m_fileGauge;
 	float m_filmOffset;
-	float projection[16];
-	float projectionInv[16];
+	float projection[16] = {};
+	float projectionInv[16] = {};
 };

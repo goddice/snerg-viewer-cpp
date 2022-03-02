@@ -22,28 +22,16 @@ static TrackballControls* s_instance = nullptr;
 
 
 Camera3D::Camera3D(const glm::vec3& pos)
-	:m_eye(pos), m_up(0.0f, 1.0f, 0.0f), m_viewMatr(1.0f)
-{
+	:m_eye(pos), m_up(0.0f, 1.0f, 0.0f), m_viewMatr(1.0f) {}
 
-
-}
 void Camera3D::LookAt(const glm::vec3& target) {
-
 	m_viewMatr = glm::lookAt(m_eye, target, m_up);
-
-
 }
-
 
 TrackballControls& TrackballControls::GetInstance(Camera3D* cam, glm::vec4 screenSize) {
-
-
 	static TrackballControls instance(cam, screenSize);
 	s_instance = &instance;
-
 	return instance;
-
-
 }
 
 //------------------------   Static callbacks -------------------------------------------------
@@ -56,17 +44,16 @@ static void MouseButtonCallBack(GLFWwindow* win, int button, int action, int mod
 	if (action == GLFW_RELEASE) {
 		s_instance->MouseUp();
 	}
-
 }
+
 static void MouseMoveCallBack(GLFWwindow* win, double xpos, double ypos) {
 	s_instance->MouseMove((int)xpos, (int)ypos);
 }
 
 static void MouseScrollCallBack(GLFWwindow* win, double xpos, double ypos) {
-
 	s_instance->MouseWheel(xpos, ypos);
-
 }
+
 static void KeyboardCallBack(GLFWwindow* win, int key, int scancode, int action, int mods) {
 	if (action == GLFW_PRESS) {
 		s_instance->KeyDown(key);
@@ -75,49 +62,42 @@ static void KeyboardCallBack(GLFWwindow* win, int key, int scancode, int action,
 	if (action == GLFW_RELEASE) {
 		s_instance->KeyUp();
 	}
-
 }
 //-----------------------------------------------------------------------------------------------
-
 
 TrackballControls::TrackballControls(Camera3D* cam, glm::vec4 screenSize)
 	:m_pCam(cam),
 	m_screen(screenSize),
-	m_enabled(true),
-	m_rotateSpeed(1.0f),
-	m_zoomSpeed(1.2f),
-	m_panSpeed(0.3f),
-	m_noRotate(false),
-	m_noPan(false),
-	m_noZoom(false),
-	m_noRoll(false),
-	m_staticMoving(false),
-	m_dynamicDampingFactor(0.2f),
-	m_minDistance(0.0f),
-	m_maxDistance(FloatInfinity),
 	m_target(0.0f),
 	m_lastPos(0.0f),
-	m_state(TCB_STATE::NONE),
-	m_prevState(TCB_STATE::NONE),
 	m_eye(0.0f),
 	m_rotStart(0.0f),
 	m_rotEnd(0.0f),
 	m_zoomStart(0.0f),
 	m_zoomEnd(0.0f),
 	m_panStart(0.0f),
-	m_panEnd(0.0f)
-{
-}
+	m_panEnd(0.0f),
+	m_state(TCB_STATE::NONE),
+	m_prevState(TCB_STATE::NONE),
+	m_rotateSpeed(1.0f),
+	m_zoomSpeed(1.2f),
+	m_panSpeed(0.3f),
+	m_dynamicDampingFactor(0.2f),
+	m_minDistance(0.0f),
+	m_maxDistance(FloatInfinity),
+	m_enabled(true),
+	m_noRotate(false),
+	m_noPan(false),
+	m_noZoom(false),
+	m_noRoll(false),
+	m_staticMoving(false) {}
 
 void TrackballControls::Init(GLFWwindow* win) {
-
 	glfwSetCursorPosCallback(win, &MouseMoveCallBack);
 	glfwSetMouseButtonCallback(win, &MouseButtonCallBack);
 	glfwSetScrollCallback(win, &MouseScrollCallBack);
 	glfwSetKeyCallback(win, &KeyboardCallBack);
 }
-
-
 
 void TrackballControls::Update() {
 

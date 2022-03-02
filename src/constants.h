@@ -1,8 +1,6 @@
 #pragma once
 #include <string>
 
-static float gNearPlane = 0.33f;
-
 const int DISPLAY_NORMAL = 0;
 const int DISPLAY_DIFFUSE = 1;
 const int DISPLAY_FEATURES = 2;
