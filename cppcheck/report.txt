@@ -1,39 +1,3 @@
-src/Raymarch.h:54:9: performance:inconclusive: Technically the member function 'Raymarch::createDummyNetworkWeightTexture' can be static (but you may consider moving to unnamed namespace). [functionStatic]
- GLuint createDummyNetworkWeightTexture();
-        ^
-src/Raymarch.cpp:439:18: note: Technically the member function 'Raymarch::createDummyNetworkWeightTexture' can be static (but you may consider moving to unnamed namespace).
-GLuint Raymarch::createDummyNetworkWeightTexture() {
-                 ^
-src/Raymarch.h:54:9: note: Technically the member function 'Raymarch::createDummyNetworkWeightTexture' can be static (but you may consider moving to unnamed namespace).
- GLuint createDummyNetworkWeightTexture();
-        ^
-src/Raymarch.h:55:9: performance:inconclusive: Technically the member function 'Raymarch::createNetworkWeightTexture' can be static (but you may consider moving to unnamed namespace). [functionStatic]
- GLuint createNetworkWeightTexture(nlohmann::json network_weights);
-        ^
-src/Raymarch.cpp:448:18: note: Technically the member function 'Raymarch::createNetworkWeightTexture' can be static (but you may consider moving to unnamed namespace).
-GLuint Raymarch::createNetworkWeightTexture(nlohmann::json network_weights) {
-                 ^
-src/Raymarch.h:55:9: note: Technically the member function 'Raymarch::createNetworkWeightTexture' can be static (but you may consider moving to unnamed namespace).
- GLuint createNetworkWeightTexture(nlohmann::json network_weights);
-        ^
-src/Raymarch.h:57:14: style:inconclusive: Technically the member function 'Raymarch::createViewDependenceFunctions' can be const. [functionConst]
- std::string createViewDependenceFunctions();
-             ^
-src/Raymarch.cpp:472:23: note: Technically the member function 'Raymarch::createViewDependenceFunctions' can be const.
-std::string Raymarch::createViewDependenceFunctions() {
-                      ^
-src/Raymarch.h:57:14: note: Technically the member function 'Raymarch::createViewDependenceFunctions' can be const.
- std::string createViewDependenceFunctions();
-             ^
-src/TrackballControls.h:87:7: style:inconclusive: Member variable 'TrackballControls::m_noZoom' is in the wrong place in the initializer list. [initializerList]
- bool m_noZoom;
-      ^
-src/TrackballControls.cpp:91:2: note: Member variable 'TrackballControls::m_noZoom' is in the wrong place in the initializer list.
- m_noZoom(false),
- ^
-src/TrackballControls.h:87:7: note: Member variable 'TrackballControls::m_noZoom' is in the wrong place in the initializer list.
- bool m_noZoom;
-      ^
 main.cpp:16:0: style: The function 'glCheckError_' is never used. [unusedFunction]
 
 ^
