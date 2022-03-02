@@ -32,7 +32,7 @@ Run it (e.g.: ./build/app models/drums)
 For the model training and the original webgl viewer, please refer to the official SNeRG repo: [https://github.com/google-research/google-research/tree/master/snerg](https://github.com/google-research/google-research/tree/master/snerg)
 
 ### TODO list
-
+- [ ] Fix rotation issue
 - [ ] Support resize
 - [ ] Support Android
 - [ ] Support iOS
