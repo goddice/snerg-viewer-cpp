@@ -50,7 +50,7 @@ public:
     }
     // de-activate the shader
     // ------------------------------------------------------------------------
-    void turnOff()
+    static void turnOff()
     {
         glUseProgram(0);
     }
@@ -116,7 +116,7 @@ public:
 private:
     // utility function for checking shader compilation/linking errors.
     // ------------------------------------------------------------------------
-    void checkCompileErrors(GLuint shader, const std::string& type)
+    static void checkCompileErrors(GLuint shader, const std::string& type)
     {
         GLint success;
         GLchar infoLog[1024];

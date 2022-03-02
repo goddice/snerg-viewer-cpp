@@ -34,7 +34,7 @@ public:
 	*/
 	static TrackballControls& GetInstance(Camera3D* cam, glm::vec4 screenSize);
 
-	void Init(GLFWwindow* win);
+	static void Init(GLFWwindow* win);
 	void Update();
 	void MouseUp();
 	void KeyUp();

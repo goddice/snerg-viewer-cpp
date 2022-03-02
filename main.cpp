@@ -12,7 +12,7 @@ void processInput(GLFWwindow* window);
 const unsigned int SCR_WIDTH = 1280;
 const unsigned int SCR_HEIGHT = 720;
 
-
+#ifdef ENABLE_GLCHECKERROR
 GLenum glCheckError_(const char* file, int line)
 {
     GLenum errorCode;
@@ -34,6 +34,8 @@ GLenum glCheckError_(const char* file, int line)
     return errorCode;
 }
 #define glCheckError() glCheckError_(__FILE__, __LINE__)
+#endif // ENABLE_GLCHECKERROR
+
 
 void APIENTRY glDebugOutput(GLenum source,
     GLenum type,
@@ -140,6 +142,8 @@ int main(int argc, char** argv)
     // initialize the scene
     Raymarch scene;
     scene.setRootDir(model_dir);
+    scene.setFovy(35.0f);
+    scene.setNearPlane(0.33f);
     scene.setSize(SCR_WIDTH, SCR_HEIGHT);
     if (!scene.initScene()) {
         exit(-1);

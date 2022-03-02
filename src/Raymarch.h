@@ -53,12 +53,12 @@ private:
 	
 	GLuint createDummyNetworkWeightTexture();
 	GLuint createNetworkWeightTexture(nlohmann::json network_weights);
-    GLuint createFloatTextureFromData(int width, int height, float* data);
+    static GLuint createFloatTextureFromData(int width, int height, float* data);
 	std::string createViewDependenceFunctions();
 
 	// utils
-	std::string digits(int d, int w);
-	std::string replaceAll(std::string str, const std::string& from, const std::string& to);
+	static std::string digits(int d, int w);
+	static std::string replaceAll(std::string str, const std::string& from, const std::string& to);
 };
 
 

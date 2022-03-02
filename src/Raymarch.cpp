@@ -20,6 +20,8 @@ Raymarch::Raymarch():
     EBO(0),
     vertexShaderSrc(""),
     fragmentShaderSrc(""),
+    screenWidth(1280),
+    screenHeight(720),
     nearPlane(0.33f),
     vfovy(35.0f),
     m_rootDir(""),
@@ -29,9 +31,7 @@ Raymarch::Raymarch():
     atlasIndexTexture(0),
     weightsTexZero(0),
     weightsTexOne(0),
-    weightsTexTwo(0),
-    screenWidth(1280),
-    screenHeight(720) {}
+    weightsTexTwo(0) {}
 
 void Raymarch::setRootDir(const std::string& rootDir) {
     m_rootDir = rootDir;
