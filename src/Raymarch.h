@@ -51,10 +51,10 @@ private:
 	void createRayMarchMaterial();
 	void createPlaneBufferGeometry(float width, float height, float z = 0.0f);
 	
-	GLuint createDummyNetworkWeightTexture();
-	GLuint createNetworkWeightTexture(nlohmann::json network_weights);
+	static GLuint createDummyNetworkWeightTexture();
+	static GLuint createNetworkWeightTexture(nlohmann::json network_weights);
     static GLuint createFloatTextureFromData(int width, int height, float* data);
-	std::string createViewDependenceFunctions();
+	std::string createViewDependenceFunctions() const;
 
 	// utils
 	static std::string digits(int d, int w);

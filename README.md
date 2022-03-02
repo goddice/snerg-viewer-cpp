@@ -29,5 +29,11 @@ Run it (e.g.: ./build/app models/drums)
 
 ![screen shot](https://i.ibb.co/fkyv8Qr/snerg.png)
 
-
 For the model training and the original webgl viewer, please refer to the official SNeRG repo: [https://github.com/google-research/google-research/tree/master/snerg](https://github.com/google-research/google-research/tree/master/snerg)
+
+### TODO list
+
+- [ ] Support resize
+- [x] Support Android
+- [x] Support iOS
+- [ ] Support WebAssembly

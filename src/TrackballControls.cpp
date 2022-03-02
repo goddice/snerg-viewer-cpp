@@ -87,8 +87,8 @@ TrackballControls::TrackballControls(Camera3D* cam, glm::vec4 screenSize)
 	m_maxDistance(FloatInfinity),
 	m_enabled(true),
 	m_noRotate(false),
-	m_noPan(false),
 	m_noZoom(false),
+	m_noPan(false),
 	m_noRoll(false),
 	m_staticMoving(false) {}
 

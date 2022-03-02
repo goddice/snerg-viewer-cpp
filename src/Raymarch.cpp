@@ -469,7 +469,7 @@ GLuint Raymarch::createFloatTextureFromData(int width, int height, float* data) 
     return texture;
 }
 
-std::string Raymarch::createViewDependenceFunctions() {
+std::string Raymarch::createViewDependenceFunctions() const {
     nlohmann::json network_weights = gSceneParams;
     
     size_t width = network_weights["0_bias"].size();
