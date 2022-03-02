@@ -1,44 +1,29 @@
-src/Raymarch.h:32:15: style:inconclusive: Member variable 'Raymarch::screenWidth' is in the wrong place in the initializer list. [initializerList]
- unsigned int screenWidth;
-              ^
-src/Raymarch.cpp:33:5: note: Member variable 'Raymarch::screenWidth' is in the wrong place in the initializer list.
-    screenWidth(1280),
-    ^
-src/Raymarch.h:32:15: note: Member variable 'Raymarch::screenWidth' is in the wrong place in the initializer list.
- unsigned int screenWidth;
-              ^
-src/shader.h:53:10: performance:inconclusive: Technically the member function 'Shader::turnOff' can be static (but you may consider moving to unnamed namespace). [functionStatic]
-    void turnOff()
-         ^
-src/shader.h:119:10: performance:inconclusive: Technically the member function 'Shader::checkCompileErrors' can be static (but you may consider moving to unnamed namespace). [functionStatic]
-    void checkCompileErrors(GLuint shader, const std::string& type)
-         ^
-src/Raymarch.h:56:12: performance:inconclusive: Technically the member function 'Raymarch::createFloatTextureFromData' can be static (but you may consider moving to unnamed namespace). [functionStatic]
-    GLuint createFloatTextureFromData(int width, int height, float* data);
-           ^
-src/Raymarch.cpp:462:18: note: Technically the member function 'Raymarch::createFloatTextureFromData' can be static (but you may consider moving to unnamed namespace).
-GLuint Raymarch::createFloatTextureFromData(int width, int height, float* data) {
+src/Raymarch.h:54:9: performance:inconclusive: Technically the member function 'Raymarch::createDummyNetworkWeightTexture' can be static (but you may consider moving to unnamed namespace). [functionStatic]
+ GLuint createDummyNetworkWeightTexture();
+        ^
+src/Raymarch.cpp:439:18: note: Technically the member function 'Raymarch::createDummyNetworkWeightTexture' can be static (but you may consider moving to unnamed namespace).
+GLuint Raymarch::createDummyNetworkWeightTexture() {
                  ^
-src/Raymarch.h:56:12: note: Technically the member function 'Raymarch::createFloatTextureFromData' can be static (but you may consider moving to unnamed namespace).
-    GLuint createFloatTextureFromData(int width, int height, float* data);
-           ^
-src/Raymarch.h:60:14: performance:inconclusive: Technically the member function 'Raymarch::digits' can be static (but you may consider moving to unnamed namespace). [functionStatic]
- std::string digits(int d, int w);
+src/Raymarch.h:54:9: note: Technically the member function 'Raymarch::createDummyNetworkWeightTexture' can be static (but you may consider moving to unnamed namespace).
+ GLuint createDummyNetworkWeightTexture();
+        ^
+src/Raymarch.h:55:9: performance:inconclusive: Technically the member function 'Raymarch::createNetworkWeightTexture' can be static (but you may consider moving to unnamed namespace). [functionStatic]
+ GLuint createNetworkWeightTexture(nlohmann::json network_weights);
+        ^
+src/Raymarch.cpp:448:18: note: Technically the member function 'Raymarch::createNetworkWeightTexture' can be static (but you may consider moving to unnamed namespace).
+GLuint Raymarch::createNetworkWeightTexture(nlohmann::json network_weights) {
+                 ^
+src/Raymarch.h:55:9: note: Technically the member function 'Raymarch::createNetworkWeightTexture' can be static (but you may consider moving to unnamed namespace).
+ GLuint createNetworkWeightTexture(nlohmann::json network_weights);
+        ^
+src/Raymarch.h:57:14: style:inconclusive: Technically the member function 'Raymarch::createViewDependenceFunctions' can be const. [functionConst]
+ std::string createViewDependenceFunctions();
              ^
-src/Raymarch.cpp:415:23: note: Technically the member function 'Raymarch::digits' can be static (but you may consider moving to unnamed namespace).
-std::string Raymarch::digits(int d, int w) {
+src/Raymarch.cpp:472:23: note: Technically the member function 'Raymarch::createViewDependenceFunctions' can be const.
+std::string Raymarch::createViewDependenceFunctions() {
                       ^
-src/Raymarch.h:60:14: note: Technically the member function 'Raymarch::digits' can be static (but you may consider moving to unnamed namespace).
- std::string digits(int d, int w);
-             ^
-src/Raymarch.h:61:14: performance:inconclusive: Technically the member function 'Raymarch::replaceAll' can be static (but you may consider moving to unnamed namespace). [functionStatic]
- std::string replaceAll(std::string str, const std::string& from, const std::string& to);
-             ^
-src/Raymarch.cpp:524:23: note: Technically the member function 'Raymarch::replaceAll' can be static (but you may consider moving to unnamed namespace).
-std::string Raymarch::replaceAll(std::string str, const std::string& from, const std::string& to) {
-                      ^
-src/Raymarch.h:61:14: note: Technically the member function 'Raymarch::replaceAll' can be static (but you may consider moving to unnamed namespace).
- std::string replaceAll(std::string str, const std::string& from, const std::string& to);
+src/Raymarch.h:57:14: note: Technically the member function 'Raymarch::createViewDependenceFunctions' can be const.
+ std::string createViewDependenceFunctions();
              ^
 src/TrackballControls.h:87:7: style:inconclusive: Member variable 'TrackballControls::m_noZoom' is in the wrong place in the initializer list. [initializerList]
  bool m_noZoom;
@@ -49,25 +34,10 @@ src/TrackballControls.cpp:91:2: note: Member variable 'TrackballControls::m_noZo
 src/TrackballControls.h:87:7: note: Member variable 'TrackballControls::m_noZoom' is in the wrong place in the initializer list.
  bool m_noZoom;
       ^
-src/TrackballControls.h:37:7: performance:inconclusive: Technically the member function 'TrackballControls::Init' can be static (but you may consider moving to unnamed namespace). [functionStatic]
- void Init(GLFWwindow* win);
-      ^
-src/TrackballControls.cpp:95:25: note: Technically the member function 'TrackballControls::Init' can be static (but you may consider moving to unnamed namespace).
-void TrackballControls::Init(GLFWwindow* win) {
-                        ^
-src/TrackballControls.h:37:7: note: Technically the member function 'TrackballControls::Init' can be static (but you may consider moving to unnamed namespace).
- void Init(GLFWwindow* win);
-      ^
 main.cpp:16:0: style: The function 'glCheckError_' is never used. [unusedFunction]
 
 ^
 src/Raymarch.cpp:187:0: style: The function 'resize' is never used. [unusedFunction]
-
-^
-src/Raymarch.cpp:49:0: style: The function 'setFovy' is never used. [unusedFunction]
-
-^
-src/Raymarch.cpp:45:0: style: The function 'setNearPlane' is never used. [unusedFunction]
 
 ^
 nofile:0:0: information: Cppcheck cannot find all the include files (use --check-config for details) [missingInclude]
