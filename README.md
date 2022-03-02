@@ -34,6 +34,6 @@ For the model training and the original webgl viewer, please refer to the offici
 ### TODO list
 
 - [ ] Support resize
-- [x] Support Android
-- [x] Support iOS
+- [ ] Support Android
+- [ ] Support iOS
 - [ ] Support WebAssembly
